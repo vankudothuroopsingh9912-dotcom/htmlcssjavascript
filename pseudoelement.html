@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p::before{
+            content: "xxxx";
+            color: blue;
+        }
+        p::after{
+            content: "master";
+            color: green;
+        }
+        p::first-letter{
+            font-size: 40px;
+            color: red;
+            font-weight: bold;
+        }
+        p::first-line{
+            color: blue;
+            font-weight: bold;
+        }
+        li::marker{
+            color: red;
+            font-size: 20px;
+        }
+        /* select::pseudo-element{
+            property:value;
+        } */
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li>html</li>
+        <li>css</li>
+        <li>javascript</li>
+    </ul>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore unde corporis sit pariatur similique commodi. Qui ab nostrum possimus maiores repellat quae id quam dolorem neque hic adipisci, alias magni?</p>
+    
+</body>
+</html>
