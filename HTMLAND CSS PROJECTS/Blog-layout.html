@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog Layout</title>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #222;
+    color: white;
+    padding: 15px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+}
+
+.search-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.search-container input {
+    width: 300px;
+    max-width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 25px;
+    padding: 30px 8%;
+}
+
+.posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    display: block;
+}
+
+.content {
+    padding: 15px;
+}
+
+.sidebar {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    height: fit-content;
+}
+
+.sidebar h3 {
+    margin-bottom: 10px;
+    color: #4f46e5;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.sidebar li {
+    padding: 6px 0;
+}
+
+footer {
+    text-align: center;
+    background: #222;
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+@media(max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+</style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">MyBlog</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Articles</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to My Blog</h1>
+        <p>Discover stories, tutorials, and ideas.</p>
+    </section>
+
+    <!-- Search -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search posts...">
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Blog Posts -->
+        <section class="posts" id="postContainer">
+
+            <article class="card">
+                <img src="https://picsum.photos/400/250?1" alt="">
+                <div class="content">
+                    <h2>Web Design Trends</h2>
+                    <p>Explore the latest trends in modern web design.</p>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://picsum.photos/400/250?2" alt="">
+                <div class="content">
+                    <h2>JavaScript Tips</h2>
+                    <p>Improve your coding skills with useful JS tricks.</p>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://picsum.photos/400/250?3" alt="">
+                <div class="content">
+                    <h2>CSS Animations</h2>
+                    <p>Create engaging user experiences with animations.</p>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>Categories</h3>
+            <ul>
+                <li>Technology</li>
+                <li>Programming</li>
+                <li>Design</li>
+                <li>Lifestyle</li>
+            </ul>
+
+            <h3>Recent Posts</h3>
+            <ul>
+                <li>Responsive Layouts</li>
+                <li>HTML Basics</li>
+                <li>CSS Grid Guide</li>
+            </ul>
+        </aside>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 MyBlog. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card");
+
+searchInput.addEventListener("keyup", () => {
+    const searchText = searchInput.value.toLowerCase();
+
+    cards.forEach(card => {
+        const title = card.querySelector("h2").textContent.toLowerCase();
+
+        if (title.includes(searchText)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+});
+    </script>
+</body>
+</html>

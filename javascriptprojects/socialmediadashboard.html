@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Dashboard</title>
+   <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+header p {
+    color: #777;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.facebook {
+    border-top: 5px solid #1877f2;
+}
+
+.twitter {
+    border-top: 5px solid #1da1f2;
+}
+
+.instagram {
+    border-top: 5px solid #e1306c;
+}
+
+.youtube {
+    border-top: 5px solid #ff0000;
+}
+
+.overview {
+    margin-top: 40px;
+}
+
+.overview h2 {
+    margin-bottom: 20px;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.overview-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.overview-card span {
+    color: #666;
+}
+
+.overview-card strong {
+    font-size: 1.4rem;
+    color: #222;
+}
+   </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Social Media Dashboard</h1>
+            <p>Total Followers: 52,000</p>
+        </header>
+
+        <div class="dashboard">
+            <div class="card facebook">
+                <h3>Facebook</h3>
+                <h2>12K</h2>
+                <p>Followers</p>
+            </div>
+
+            <div class="card twitter">
+                <h3>Twitter</h3>
+                <h2>8.5K</h2>
+                <p>Followers</p>
+            </div>
+
+            <div class="card instagram">
+                <h3>Instagram</h3>
+                <h2>25K</h2>
+                <p>Followers</p>
+            </div>
+
+            <div class="card youtube">
+                <h3>YouTube</h3>
+                <h2>6.5K</h2>
+                <p>Subscribers</p>
+            </div>
+        </div>
+
+        <section class="overview">
+            <h2>Today's Overview</h2>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <span>Likes</span>
+                    <strong>1,245</strong>
+                </div>
+
+                <div class="overview-card">
+                    <span>Comments</span>
+                    <strong>568</strong>
+                </div>
+
+                <div class="overview-card">
+                    <span>Shares</span>
+                    <strong>324</strong>
+                </div>
+
+                <div class="overview-card">
+                    <span>Views</span>
+                    <strong>12,340</strong>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>

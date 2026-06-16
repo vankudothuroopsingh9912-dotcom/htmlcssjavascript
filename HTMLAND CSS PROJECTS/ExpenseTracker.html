@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 350px;
+  background: white;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.balance {
+  background: #222;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.income {
+  color: green;
+}
+
+.expense {
+  color: red;
+}
+
+input {
+  width: 90%;
+  padding: 8px;
+  margin: 5px 0;
+}
+
+button {
+  padding: 8px 15px;
+  border: none;
+  background: #28a745;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #218838;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #f1f1f1;
+  margin: 5px 0;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+.delete {
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>💰 Expense Tracker</h1>
+
+    <div class="balance">
+      <h2>Balance: ₹<span id="balance">0</span></h2>
+    </div>
+
+    <div class="summary">
+      <div class="income">Income: ₹<span id="income">0</span></div>
+      <div class="expense">Expense: ₹<span id="expense">0</span></div>
+    </div>
+
+    <h3>Add Transaction</h3>
+    <input type="text" id="desc" placeholder="Description">
+    <input type="number" id="amount" placeholder="Amount (+ income, - expense)">
+    <button onclick="addTransaction()">Add</button>
+
+    <h3>History</h3>
+    <ul id="list"></ul>
+  </div>
+
+  <script>
+let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+
+const list = document.getElementById("list");
+const balanceEl = document.getElementById("balance");
+const incomeEl = document.getElementById("income");
+const expenseEl = document.getElementById("expense");
+
+function addTransaction() {
+  const desc = document.getElementById("desc").value;
+  const amount = document.getElementById("amount").value;
+
+  if (desc === "" || amount === "") return;
+
+  const transaction = {
+    id: Date.now(),
+    desc,
+    amount: +amount
+  };
+
+  transactions.push(transaction);
+  updateLocalStorage();
+  updateUI();
+
+  document.getElementById("desc").value = "";
+  document.getElementById("amount").value = "";
+}
+
+function deleteTransaction(id) {
+  transactions = transactions.filter(t => t.id !== id);
+  updateLocalStorage();
+  updateUI();
+}
+
+function updateUI() {
+  list.innerHTML = "";
+
+  let income = 0;
+  let expense = 0;
+
+  transactions.forEach(t => {
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      ${t.desc} <span>₹${t.amount}</span>
+      <button class="delete" onclick="deleteTransaction(${t.id})">X</button>
+    `;
+
+    list.appendChild(li);
+
+    if (t.amount > 0) income += t.amount;
+    else expense += Math.abs(t.amount);
+  });
+
+  balanceEl.innerText = income - expense;
+  incomeEl.innerText = income;
+  expenseEl.innerText = expense;
+}
+
+function updateLocalStorage() {
+  localStorage.setItem("transactions", JSON.stringify(transactions));
+}
+
+// Load on start
+updateUI();
+  </script>
+</body>
+</html>

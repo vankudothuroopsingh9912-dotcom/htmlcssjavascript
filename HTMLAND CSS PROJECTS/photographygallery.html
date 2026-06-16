@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Gallery</title>
+   <style>
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#111;
+    color:#fff;
+}
+
+header{
+    text-align:center;
+    padding:40px 20px;
+}
+
+header h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+header p{
+    color:#bbb;
+}
+
+.gallery{
+    width:90%;
+    max-width:1200px;
+    margin:20px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.photo{
+    overflow:hidden;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    display:block;
+    transition:transform 0.4s ease;
+}
+
+.photo:hover img{
+    transform:scale(1.1);
+}
+
+.lightbox{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:rgba(0,0,0,0.9);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.lightbox img{
+    max-width:90%;
+    max-height:85vh;
+    border-radius:10px;
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+}
+
+@media(max-width:768px){
+    header h1{
+        font-size:2rem;
+    }
+}
+   </style>
+</head>
+<body>
+
+    <header>
+        <h1>Photography Gallery</h1>
+        <p>Capturing moments, one frame at a time</p>
+    </header>
+
+    <section class="gallery">
+
+        <div class="photo">
+            <img src="https://picsum.photos/id/1015/600/400" alt="Nature">
+        </div>
+
+        <div class="photo">
+            <img src="https://picsum.photos/id/1016/600/400" alt="Mountain">
+        </div>
+
+        <div class="photo">
+            <img src="https://picsum.photos/id/1025/600/400" alt="Dog">
+        </div>
+
+        <div class="photo">
+            <img src="https://picsum.photos/id/1035/600/400" alt="Forest">
+        </div>
+
+        <div class="photo">
+            <img src="https://picsum.photos/id/1043/600/400" alt="Ocean">
+        </div>
+
+        <div class="photo">
+            <img src="https://picsum.photos/id/1050/600/400" alt="Bridge">
+        </div>
+         <div class="photo">
+            <img src="https://picsum.photos/id/1015/600/400" alt="Nature">
+        </div>
+
+        <div class="photo">
+            <img src="https://picsum.photos/id/1016/600/400" alt="Mountain">
+        </div>
+
+        <div class="photo">
+            <img src="https://picsum.photos/id/1025/600/400" alt="Dog">
+        </div>
+
+        <div class="photo">
+            <img src="https://picsum.photos/id/1035/600/400" alt="Forest">
+        </div>
+
+        <div class="photo">
+            <img src="https://picsum.photos/id/1043/600/400" alt="Ocean">
+        </div>
+
+        <div class="photo">
+            <img src="https://picsum.photos/id/1050/600/400" alt="Bridge">
+        </div>
+
+
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="close">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script>
+const images = document.querySelectorAll('.photo img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.querySelector('.close');
+
+images.forEach(image => {
+    image.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = image.src;
+    });
+});
+
+closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+});
+
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+    }
+});
+    </script>
+</body>
+</html>

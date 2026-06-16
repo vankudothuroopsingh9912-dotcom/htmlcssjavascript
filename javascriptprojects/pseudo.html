@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button:hover{
+            background-color: blue;
+            color: white;
+
+        }
+        div:empty{
+            border: 2px solid red;
+        }
+        input:disabled{
+            background-color: lightblue;
+        }
+        input:enabled{
+            border: 2px solid green;
+        }
+        button:active{
+            background-color: orange;
+
+        }
+        input:checked{
+            width: 20px;
+            height: 20px;
+        }
+        input:focus{
+            border: 2px solid blue;
+        }
+        li:first-child{
+            color: red;
+        }
+        li:last-child{
+            color: green;
+        }
+        div:first-of-type{
+            background-color: yellow;
+        }
+        a:link{
+            color: blue;
+        }
+        a:visited{
+            color: purple;
+        }
+        li:nth-child(2){
+            color: orange;
+        }
+        p:only-child{
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+   <ul>
+    <li>HTML</li>
+    <li>css</li>
+    <li>javascript</li>
+   </ul> 
+   <input type="text" placeholder="Focus here">
+   <input type="text" disabled>
+   <input type="checkbox" checked>
+   <a href="#" >link</a>
+   <div></div>
+</body>
+</html>

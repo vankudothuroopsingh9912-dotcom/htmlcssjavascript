@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProductLandingPage</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial,sans-serif;
+        }
+        body{
+            background: #f4f4f4;
+
+        }
+        header{
+            background: #222;
+            color: white;
+            padding: 15px 50px;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul{
+            display: flex;
+            list-style: none;
+        }
+        nav ul li{
+            margin-left: 20px;
+        }
+        nav ul li a{
+            color: white;
+            text-decoration: none;
+
+        }
+        .hero{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 80px 50px;
+            background: white;
+        }
+        .content{
+            max-width: 500px;
+        }
+        .content h2{
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        .content p{
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        button{
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover{
+            background: #0056b3;
+        }
+        .img img{
+            width: 350px;
+        }
+        .features{
+            padding: 60px 50px;
+            text-align: center;
+        }
+        .feature-box{
+            display: box;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .box{
+            background: white;
+            padding: 25px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .pricing{
+            text-align: center;
+            padding: 60px;
+            background: #222;
+            color: white;
+        }
+        .pricing h3{
+            font-size: 40px;
+            margin: 20px 0;
+        }
+        footer{
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>SmartWatch</h1>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="content">
+            <h2>next generation smart watch</h2>
+            <p>track your health,fitness,and notifications with style.</p>
+            <button>buy now</button>
+
+        </div>
+        <div class="image">
+            <img src="#" alt="smart watch">
+        </div>
+    </section>
+    <select class="features">
+        <h2>Features</h2>
+        <div class="feature-box">
+            <div class="box">
+                <h3>Heart rate Monitor</h3>
+                <p>Monitor your heart rate in real time.</p>
+            </div>
+             <div class="box">
+                <h3>Fitness Tracking</h3>
+                <p>Track steps,calories,and workouts</p>
+            </div>
+             <div class="box">
+                <h3>Long Battery Life</h3>
+                <p>up to 10 days battery backup</p>
+            </div>
+
+        </div>
+    </select>
+<select class="pricing">
+    <h2>Price</h2>
+    <h3>49999</h3>
+    <button>Order Now</button>
+</select>
+<footer>
+    <p>&copy;2026 smartWatch. All Rights Reserved</p>
+</footer>
+</body>
+</html>

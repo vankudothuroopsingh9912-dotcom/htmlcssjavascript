@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Tester</title>
+   <style>
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:#f4f4f4;
+}
+
+.container{
+    width:700px;
+    max-width:90%;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+#quote{
+    padding:15px;
+    background:#eef2ff;
+    border-radius:8px;
+    margin-bottom:15px;
+    line-height:1.6;
+}
+
+textarea{
+    width:100%;
+    padding:12px;
+    border:2px solid #ddd;
+    border-radius:8px;
+    resize:none;
+    font-size:16px;
+}
+
+.stats{
+    display:flex;
+    justify-content:space-between;
+    margin-top:15px;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.stats p{
+    font-weight:bold;
+}
+
+button{
+    margin-top:20px;
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#4f46e5;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#4338ca;
+}
+   </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Typing Speed Tester</h1>
+
+    <div id="quote">
+        The quick brown fox jumps over the lazy dog. Practice typing accurately and quickly to improve your speed.
+    </div>
+
+    <textarea
+        id="input"
+        placeholder="Start typing here..."
+        rows="6"></textarea>
+
+    <div class="stats">
+        <p>Time Left: <span id="time">60</span>s</p>
+        <p>WPM: <span id="wpm">0</span></p>
+        <p>CPM: <span id="cpm">0</span></p>
+        <p>Accuracy: <span id="accuracy">100</span>%</p>
+    </div>
+
+    <button id="restart">Restart</button>
+</div>
+
+<script>
+    const quote =
+"The quick brown fox jumps over the lazy dog. Practice typing accurately and quickly to improve your speed.";
+
+const input = document.getElementById("input");
+const timeDisplay = document.getElementById("time");
+const wpmDisplay = document.getElementById("wpm");
+const cpmDisplay = document.getElementById("cpm");
+const accuracyDisplay = document.getElementById("accuracy");
+const restartBtn = document.getElementById("restart");
+
+let timeLeft = 60;
+let timerStarted = false;
+let timer;
+
+function startTimer() {
+    timer = setInterval(() => {
+        timeLeft--;
+        timeDisplay.textContent = timeLeft;
+
+        calculateStats();
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            input.disabled = true;
+        }
+    }, 1000);
+}
+
+function calculateStats() {
+    const typedText = input.value;
+
+    let correctChars = 0;
+
+    for (let i = 0; i < typedText.length; i++) {
+        if (typedText[i] === quote[i]) {
+            correctChars++;
+        }
+    }
+
+    const totalChars = typedText.length;
+
+    const accuracy =
+        totalChars === 0
+            ? 100
+            : ((correctChars / totalChars) * 100).toFixed(1);
+
+    const elapsedTime = (60 - timeLeft) / 60;
+
+    const wpm =
+        elapsedTime > 0
+            ? Math.round((typedText.trim().split(/\s+/).length / elapsedTime))
+            : 0;
+
+    const cpm =
+        elapsedTime > 0
+            ? Math.round(totalChars / elapsedTime)
+            : 0;
+
+    accuracyDisplay.textContent = accuracy;
+    wpmDisplay.textContent = wpm;
+    cpmDisplay.textContent = cpm;
+}
+
+input.addEventListener("input", () => {
+    if (!timerStarted) {
+        timerStarted = true;
+        startTimer();
+    }
+
+    calculateStats();
+});
+
+restartBtn.addEventListener("click", () => {
+    clearInterval(timer);
+
+    timeLeft = 60;
+    timerStarted = false;
+
+    input.value = "";
+    input.disabled = false;
+
+    timeDisplay.textContent = "60";
+    wpmDisplay.textContent = "0";
+    cpmDisplay.textContent = "0";
+    accuracyDisplay.textContent = "100";
+});
+
+</script>
+</body>
+</html>

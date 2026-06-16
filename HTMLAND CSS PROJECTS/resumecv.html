@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+<style>
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+    color:#333;
+}
+
+header{
+    background:#1e293b;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 30px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:20px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+.hero img{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    margin:20px 0;
+    border:4px solid white;
+}
+
+section{
+    max-width:900px;
+    margin:30px auto;
+    padding:20px;
+    background:white;
+    border-radius:10px;
+}
+
+h2{
+    margin-bottom:15px;
+    color:#1e293b;
+}
+
+.skill{
+    margin-bottom:15px;
+}
+
+.bar{
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.bar span{
+    display:block;
+    height:15px;
+    background:#2563eb;
+}
+
+.card{
+    background:#f8fafc;
+    padding:15px;
+    margin-top:10px;
+    border-left:5px solid #2563eb;
+}
+
+button{
+    padding:10px 20px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+@media(max-width:768px){
+    nav{
+        flex-direction:column;
+    }
+
+    nav ul{
+        margin-top:10px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+}
+</style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <h2>My CV</h2>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero">
+            <img src="../12 (1).png" alt="Profile Photo">
+            <h1>Vankudothu Roopsingh</h1>
+            <p>Web Developer | Designer | Student</p>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Passionate web developer with experience in HTML, CSS,
+            JavaScript and modern web technologies.
+        </p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skill">
+            <p>HTML</p>
+            <div class="bar"><span style="width:99%"></span></div>
+        </div>
+
+        <div class="skill">
+            <p>CSS</p>
+            <div class="bar"><span style="width:100%"></span></div>
+        </div>
+
+        <div class="skill">
+            <p>JavaScript</p>
+            <div class="bar"><span style="width:100%"></span></div>
+        </div>
+         <div class="skill">
+            <p>react js</p>
+            <div class="bar"><span style="width:99%"></span></div>
+        </div>
+         <div class="skill">
+            <p>Node js</p>
+            <div class="bar"><span style="width:99%"></span></div>
+        </div>
+         <div class="skill">
+            <p>Mongo db</p>
+            <div class="bar"><span style="width:99%"></span></div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="card">
+            <h3>Bachelor of Technology</h3>
+            <p>JNTU HYDERABAD | 2018 - 2018</p>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="card">
+            <h3>Frontend Developer Intern</h3>
+            <p>codec  | 2024</p>
+            <p>Worked on responsive websites and UI development.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: vankudothuroopsingh9912@gmail.com</p>
+        <p>Phone: +91 9912772118</p>
+        <button id="downloadBtn">Download Resume</button>
+    </section>
+
+    <script>
+        document.getElementById("downloadBtn").addEventListener("click", () => {
+    alert("Resume download feature coming soon!");
+});
+    </script>
+</body>
+</html>

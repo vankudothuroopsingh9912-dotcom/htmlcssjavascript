@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz App</title>
+ <style>
+    body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.quiz-container {
+  background: white;
+  padding: 20px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+#question {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.option {
+  display: block;
+  background: #eee;
+  margin: 8px 0;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.option:hover {
+  background: #ddd;
+}
+
+#nextBtn {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  background: #28a745;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#nextBtn:disabled {
+  background: gray;
+}
+
+#result {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+ </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h2>Simple Quiz</h2>
+
+    <div id="question">Question text</div>
+
+    <div id="options"></div>
+
+    <button id="nextBtn">Next</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+const quizData = [
+  {
+    question: "What does HTML stand for?",
+    options: [
+      "Hyper Text Markup Language",
+      "High Text Machine Language",
+      "Hyper Transfer Markup Language",
+      "None"
+    ],
+    answer: "Hyper Text Markup Language"
+  },
+  {
+    question: "Which language is used for styling web pages?",
+    options: ["HTML", "CSS", "Python", "Java"],
+    answer: "CSS"
+  },
+  {
+    question: "Which is a JavaScript framework?",
+    options: ["Django", "Laravel", "React", "Flask"],
+    answer: "React"
+  }
+];
+
+let currentIndex = 0;
+let score = 0;
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const resultEl = document.getElementById("result");
+
+function loadQuestion() {
+  const current = quizData[currentIndex];
+  questionEl.textContent = current.question;
+  optionsEl.innerHTML = "";
+
+  current.options.forEach(option => {
+    const btn = document.createElement("div");
+    btn.classList.add("option");
+    btn.textContent = option;
+
+    btn.onclick = () => {
+      if (option === current.answer) {
+        score++;
+      }
+      nextBtn.disabled = false;
+      document.querySelectorAll(".option").forEach(o => o.style.pointerEvents = "none");
+    };
+
+    optionsEl.appendChild(btn);
+  });
+
+  nextBtn.disabled = true;
+}
+
+nextBtn.addEventListener("click", () => {
+  currentIndex++;
+
+  if (currentIndex < quizData.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
+});
+
+function showResult() {
+  questionEl.style.display = "none";
+  optionsEl.style.display = "none";
+  nextBtn.style.display = "none";
+
+  resultEl.textContent = `Your Score: ${score} / ${quizData.length}`;
+}
+
+loadQuestion();
+  </script>
+</body>
+</html>

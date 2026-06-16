@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurveyForm</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial,sans-serif;
+        }
+        body{
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+
+        }
+        .container{
+            width: 500px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h1{
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label{
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input,select, textarea{
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+        }
+        .radio-group,.checkbox-group{
+            margin-top: 10px;
+        }
+        .radio-group input,.checkbox-group input{
+            width: auto;
+            margin-right: 5px;
+        }
+        button{
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 16px;
+
+        }
+        button:hover{
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Survey Form</h1>
+        <form>
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your name" required>
+
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email" required>
+
+            <label>Age</label>
+            <input type="number" placeholder="Enter your age">
+
+            <label>Gender</label>
+            <div class="radio-group">
+                <input type="radio" name="gender">Male
+                <input type="radio" name="gender">FeMale
+                <input type="radio" name="gender">Other
+
+            </div>
+            <label >How satisfied are you with our service</label>
+            <select>
+                <option>select</option>
+                <option>Very satisfied</option>
+                <option>satisfied</option>
+                <option>Neutral</option>
+                <option>Dissatisfied</option>
+            </select>
+            <label>What features do you use </label>
+            <div class="checkbox-group">
+                <input type="checkbox">website
+                <input type="checkbox">Mobile App
+                <input type="checkbox">Customer support
+            </div>
+            <label>Suggestions</label>
+            <textarea rows="5" placeholder="write your feedback here"></textarea>
+            <button type="submit">submit survey</button>
+
+        </form>
+    </div>
+</body>
+</html>
